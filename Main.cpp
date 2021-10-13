@@ -32,7 +32,6 @@ public:
 
 private:
 	int* newArray;
-public:
 	int arraysize;
 };
 
