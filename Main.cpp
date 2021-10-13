@@ -3,18 +3,27 @@
 class Array
 {
 public:
-	void Create(int x)
+
+	void Create(int size)
 	{
-		newArray = new int[x];
+		arraysize = size;
+		newArray = new int[size];
 	}
 	void Set(int i)
-	{
-		newArray[i] = i;
+	{	
+		if (i >= 0 && i < arraysize)
+			newArray[i] = i;
+		else
+			return;
 	}
 	void Get(int i)
-	{
-		printf("%d\n", newArray[i]);
+	{	
+		if (i >= 0 && i < arraysize)
+			printf("%d\n", newArray[i]);
+		else
+			return;
 	}
+	
 	~Array()
 	{
 		delete[] newArray;
@@ -23,12 +32,13 @@ public:
 
 private:
 	int* newArray;
+public:
+	int arraysize;
 };
 
 int main()
 {
 	Array array;
-
 	array.Create(1000);
 
 	for (int i = 0; i < 1000; i++)
@@ -40,4 +50,6 @@ int main()
 	{
 		array.Get(i);
 	}
+	array.Set(-1);
+	array.Get(-1);
 }
